@@ -8,10 +8,18 @@ fun main() {
     println("Rock, Paper or Scissors. Enter your choice!")
     playerChoice = readln()
 
-    when ((1..3).random()) {
-        1 -> computerChoice = "Rock"
-        2 -> computerChoice = "Paper"
-        3 -> computerChoice = "Scissors"
+    val randomNumber = (1..3).random()
+
+    when(randomNumber) {
+        1 -> {
+            computerChoice = "Rock"
+        }
+        2 -> {
+            computerChoice = "Paper"
+        }
+        3 -> {
+            computerChoice = "Scissors"
+        }
     }
     println(computerChoice)
 
@@ -20,18 +28,19 @@ fun main() {
         playerChoice == "Rock" && computerChoice == "Scissors" -> "Player"
         playerChoice == "Paper" && computerChoice == "Rock" -> "Player"
         playerChoice == "Scissors" && computerChoice == "Paper" -> "Player"
-        else -> "Computer"
+        playerChoice == "Rock" && computerChoice == "Paper" -> "Computer"
+        playerChoice == "Paper" && computerChoice == "Scissors" -> "Computer"
+        playerChoice == "Scissors" && computerChoice == "Rock" -> "Computer"
+        else -> "Error"
     }
 
-    when (winner) {
-        "Tie" -> {
-            println("It's a tie")
-        }
-        "Player" -> {
-            println("Player won!")
-        }
-        else -> {
-            println("Computer won!")
-        }
+    if(winner == "Tie") {
+        println("It's a tie")
+    }
+    else if(winner == "Player") {
+        println("Player won!")
+    }
+    else {
+        println("Computer won!")
     }
 }
